@@ -1,0 +1,12 @@
+This Mathematica 8.0 notebook implements and demonstrates
+a simple unit testing framework.
+
+Here's a simple example of how to use it:
+
+AddTest[mytests, "Set Up", Module[{}, a := 1]]
+AddTest[mytests, "Tear Down", Module[{}, Clear[a]]]
+AddTest[mytests, "Simple Test", a == 1]
+AddTest[mytests, "More complex test", 2*a == 2]
+RunTest[mytests]
+
+

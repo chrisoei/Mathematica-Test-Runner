@@ -1,0 +1,318 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     10118,        309]
+NotebookOptionsPosition[      8757,        258]
+NotebookOutlinePosition[      9367,        283]
+CellTagsIndexPosition[      9283,        278]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"AddTest", "[", 
+   RowBox[{"suite_", ",", "name_", ",", "test_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"suite", "[", "name", "]"}], ":=", "test"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"Not", "[", 
+        RowBox[{"Or", "[", 
+         RowBox[{
+          RowBox[{"name", "\[Equal]", "\"\<Tear Down\>\""}], ",", 
+          RowBox[{"name", "\[Equal]", "\"\<Set Up\>\""}]}], "]"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"Not", "[", 
+           RowBox[{"ListQ", "[", 
+            RowBox[{"suite", "[", "UnitTests", "]"}], "]"}], "]"}], ",", 
+          RowBox[{
+           RowBox[{"suite", "[", "UnitTests", "]"}], "=", 
+           RowBox[{"{", "}"}]}]}], "]"}], ";", 
+        RowBox[{
+         RowBox[{"suite", "[", "UnitTests", "]"}], " ", "=", " ", 
+         RowBox[{"Append", "[", 
+          RowBox[{
+           RowBox[{"suite", "[", "UnitTests", "]"}], ",", "name"}], 
+          "]"}]}]}]}], "]"}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.531607607507333*^9, 3.531607618292388*^9}, {
+   3.53161023735111*^9, 3.531610290397208*^9}, {3.5316111150180597`*^9, 
+   3.531611118202187*^9}, {3.531611164543418*^9, 3.531611204939535*^9}, {
+   3.531612631996616*^9, 3.531612710344255*^9}, 3.53161282396418*^9, {
+   3.531613120606138*^9, 3.53161317693058*^9}, {3.53161349140341*^9, 
+   3.531613496121291*^9}, {3.5316136101834517`*^9, 3.5316136142694807`*^9}, {
+   3.531613700845265*^9, 3.5316137034277487`*^9}, {3.5316140410735617`*^9, 
+   3.531614055504365*^9}, {3.531614442570435*^9, 3.53161444892868*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SetAttributes", "[", 
+  RowBox[{"AddTest", ",", "HoldAll"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"RunTest", "[", " ", 
+   RowBox[{"suite_", ",", "name_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "result", "}"}], ",", " ", 
+    RowBox[{
+     RowBox[{"suite", "[", "\"\<Set Up\>\"", "]"}], ";", 
+     RowBox[{"result", "=", 
+      RowBox[{"suite", "[", "name", "]"}]}], ";", 
+     RowBox[{"suite", "[", "\"\<Tear Down\>\"", "]"}], ";", "result"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.5316104033290243`*^9, 3.531610412506406*^9}, {
+  3.531610447498946*^9, 3.5316104669508038`*^9}, {3.531610500941525*^9, 
+  3.531610525315958*^9}, {3.531611899192402*^9, 3.5316119144223957`*^9}, {
+  3.531612833142325*^9, 3.531612876385479*^9}, {3.531614231183275*^9, 
+  3.531614235701152*^9}, {3.5316144627827663`*^9, 3.531614466757883*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"RunTest", "[", "suite_", "]"}], ":=", " ", 
+  RowBox[{"Apply", "[", 
+   RowBox[{"And", ",", " ", 
+    RowBox[{"Map", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"RunTest", "[", 
+        RowBox[{"suite", ",", "#"}], "]"}], "&"}], ",", " ", 
+      RowBox[{"suite", "[", "UnitTests", "]"}]}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.531610732809148*^9, 3.531610782417074*^9}, {
+  3.531612962816381*^9, 3.531613009483643*^9}, {3.531614243060998*^9, 
+  3.5316142464358177`*^9}, {3.5316144744504137`*^9, 3.531614477265633*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DeleteTest", "[", 
+   RowBox[{"suite_", ",", "name_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"suite", "[", "name", "]"}], "=."}], ";", 
+     RowBox[{
+      RowBox[{"suite", "[", "UnitTests", "]"}], "=", 
+      RowBox[{"Delete", "[", 
+       RowBox[{
+        RowBox[{"suite", "[", "UnitTests", "]"}], ",", 
+        RowBox[{"Position", "[", 
+         RowBox[{
+          RowBox[{"suite", "[", "UnitTests", "]"}], ",", "name"}], "]"}]}], 
+       "]"}]}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.531611495674094*^9, 3.5316115551389103`*^9}, {
+  3.531611831506699*^9, 3.5316118369607763`*^9}, {3.53161326014115*^9, 
+  3.531613322225816*^9}, {3.531614253469267*^9, 3.531614257564871*^9}, {
+  3.531614486464612*^9, 3.531614493263928*^9}}],
+
+Cell[BoxData[
+ RowBox[{"AddTest", "[", 
+  RowBox[{"mytests", ",", "\"\<Set Up\>\"", ",", " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"a", ":=", "1"}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5316140686847677`*^9, 3.531614076169441*^9}, {
+  3.531614539856763*^9, 3.531614578187941*^9}}],
+
+Cell[BoxData[
+ RowBox[{"AddTest", "[", 
+  RowBox[{"mytests", ",", " ", "\"\<Tear Down\>\"", ",", " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", 
+     RowBox[{"Clear", "[", "a", "]"}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.531614602208096*^9, 3.531614615001396*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AddTest", "[", 
+  RowBox[{"mytests", ",", " ", "\"\<Simple Test\>\"", ",", " ", 
+   RowBox[{"a", "\[Equal]", "1"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.531614621347419*^9, 3.531614638086533*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "\<\"Simple Test\"\>", "}"}]], "Output",
+ CellChangeTimes->{3.531614641503702*^9, 3.53161476533001*^9, 
+  3.531615061011215*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AddTest", "[", 
+  RowBox[{"mytests", ",", " ", "\"\<More complex test\>\"", ",", " ", 
+   RowBox[{
+    RowBox[{"2", "*", "a"}], "\[Equal]", "2"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.53161464347176*^9, 3.5316146582211647`*^9}, {
+  3.531614745110702*^9, 3.531614746861926*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Simple Test\"\>", ",", "\<\"More complex test\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.531614660212047*^9, 3.5316147654123783`*^9, 
+  3.531615061058866*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RunTest", "[", "mytests", "]"}]], "Input",
+ CellChangeTimes->{{3.53161466236309*^9, 3.531614665748405*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.531614667259469*^9, 3.531614765448031*^9, 
+  3.531615061108753*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "mytests"}]], "Input",
+ CellChangeTimes->{{3.5316146688429728`*^9, 3.5316146702599773`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Global`mytests", "Print", "PrintUsage",
+ CellChangeTimes->{3.531615061310525*^9},
+ CellTags->"Info3531586261-4788193"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {GridBox[{
+       {
+        RowBox[{
+         RowBox[{"mytests", "[", "\<\"More complex test\"\>", "]"}], ":=", 
+         RowBox[{
+          RowBox[{"2", " ", "a"}], "\[Equal]", "2"}]}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"mytests", "[", "\<\"Set Up\"\>", "]"}], ":=", 
+         RowBox[{"Module", "[", 
+          RowBox[{
+           RowBox[{"{", "}"}], ",", 
+           RowBox[{"a", ":=", "1"}]}], "]"}]}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"mytests", "[", "\<\"Simple Test\"\>", "]"}], ":=", 
+         RowBox[{"a", "\[Equal]", "1"}]}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"mytests", "[", "\<\"Tear Down\"\>", "]"}], ":=", 
+         RowBox[{"Module", "[", 
+          RowBox[{
+           RowBox[{"{", "}"}], ",", 
+           RowBox[{"Clear", "[", "a", "]"}]}], "]"}]}]},
+       {" "},
+       {
+        RowBox[{
+         RowBox[{"mytests", "[", "UnitTests", "]"}], "=", 
+         RowBox[{"{", 
+          RowBox[{"\<\"Simple Test\"\>", ",", "\<\"More complex test\"\>"}], 
+          "}"}]}]}
+      },
+      BaselinePosition->{Baseline, {1, 1}},
+      GridBoxAlignment->{
+       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+        "RowsIndexed" -> {}},
+      GridBoxItemSize->{"Columns" -> {{
+           Scaled[0.999]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+        "RowsIndexed" -> {}}]}
+   },
+   BaselinePosition->{Baseline, {1, 1}},
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}}],
+  Definition[$CellContext`mytests],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.531615061345027*^9},
+ CellTags->"Info3531586261-4788193"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", "mytests", "]"}]], "Input",
+ CellChangeTimes->{{3.531614729532432*^9, 3.531614733369154*^9}}]
+},
+WindowSize->{740, 681},
+WindowMargins->{{213, Automatic}, {Automatic, 41}},
+ShowSelection->True,
+FrontEndVersion->"8.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 5, \
+2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info3531586261-4788193"->{
+  Cell[6716, 194, 124, 2, 39, "Print",
+   CellTags->"Info3531586261-4788193"],
+  Cell[6843, 198, 1753, 52, 145, "Print",
+   CellTags->"Info3531586261-4788193"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info3531586261-4788193", 9098, 270}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1731, 40, 73, "Input"],
+Cell[2291, 62, 101, 2, 27, "Input"],
+Cell[2395, 66, 799, 17, 43, "Input"],
+Cell[3197, 85, 572, 13, 27, "Input"],
+Cell[3772, 100, 856, 22, 58, "Input"],
+Cell[4631, 124, 341, 8, 27, "Input"],
+Cell[4975, 134, 306, 7, 27, "Input"],
+Cell[CellGroupData[{
+Cell[5306, 145, 224, 4, 27, "Input"],
+Cell[5533, 151, 156, 3, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5726, 159, 305, 6, 27, "Input"],
+Cell[6034, 167, 209, 5, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6280, 177, 131, 2, 27, "Input"],
+Cell[6414, 181, 120, 2, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6571, 188, 120, 2, 27, "Input"],
+Cell[CellGroupData[{
+Cell[6716, 194, 124, 2, 39, "Print",
+ CellTags->"Info3531586261-4788193"],
+Cell[6843, 198, 1753, 52, 145, "Print",
+ CellTags->"Info3531586261-4788193"]
+}, Open  ]]
+}, Open  ]],
+Cell[8623, 254, 130, 2, 27, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
